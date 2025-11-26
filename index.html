@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesignSell Apparel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f8fb;
+            --primary: #272343;
+            --accent: #ffd803;
+            --text: #2d2a44;
+            --muted: #6c6a8a;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--bg-color);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(39, 35, 67, 0.92), rgba(29, 67, 102, 0.85)),
+                        url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1600&q=80") center/cover;
+            color: #fff;
+            padding-bottom: 4rem;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta {
+            padding: 0.65rem 1.4rem;
+            background: var(--accent);
+            color: #0b0b0f;
+            font-weight: 600;
+            border-radius: 999px;
+            box-shadow: 0 10px 25px rgba(255, 216, 3, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(255, 216, 3, 0.45);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 3rem;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-copy p {
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 1.8rem;
+            max-width: 26rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #0f0f14;
+            padding: 0.9rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 16px 35px rgba(255, 216, 3, 0.35);
+            transition: transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            padding: 0.9rem 1.8rem;
+            border-radius: 12px;
+            color: #fff;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-banner {
+            position: relative;
+            border-radius: 22px;
+            overflow: hidden;
+            min-height: 360px;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: grid;
+            place-items: center;
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80") center/cover;
+            opacity: 0.68;
+        }
+
+        .hero-banner .tagline {
+            position: relative;
+            color: #fff;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            padding: 1.8rem;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .section-heading span {
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+        }
+
+        .product-card figure {
+            position: relative;
+            padding-top: 125%;
+            overflow: hidden;
+        }
+
+        .product-card figure::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-1 figure::before {
+            background-image: url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .product-2 figure::before {
+            background-image: url("https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .product-3 figure::before {
+            background-image: url("https://images.unsplash.com/photo-1551232864-3f0890e580d7?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .product-4 figure::before {
+            background-image: url("https://images.unsplash.com/photo-1517949908114-720226b864c1?auto=format&fit=crop&w=800&q=80");
+        }
+
+        .product-body {
+            padding: 1.6rem;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .product-body h3 {
+            font-size: 1.1rem;
+        }
+
+        .product-body p {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.4rem;
+        }
+
+        .price-tag {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .badge {
+            background: rgba(39, 35, 67, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .collection-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+            margin-bottom: 4rem;
+        }
+
+        .collection-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 260px;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            color: #fff;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+        }
+
+        .collection-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(39, 35, 67, 0.05), rgba(39, 35, 67, 0.65));
+        }
+
+        .collection-card h3 {
+            position: relative;
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .collection-card span {
+            position: relative;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .collection-card.women {
+            background: url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=80") center/cover;
+        }
+
+        .collection-card.men {
+            background: url("https://images.unsplash.com/photo-1509942774465-10c9450b0954?auto=format&fit=crop&w=1200&q=80") center/cover;
+        }
+
+        .collection-card.kids {
+            background: url("https://images.unsplash.com/photo-1636041287630-21f3ae542173?auto=format&fit=crop&w=1200&q=80") center/cover;
+        }
+
+        .collection-card.accesories {
+            background: url("https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80") center/cover;
+        }
+
+        .testimonials {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 2.6rem;
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.1);
+            margin-bottom: 4rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial {
+            background: rgba(39, 35, 67, 0.03);
+            border-radius: 18px;
+            padding: 1.8rem;
+        }
+
+        .testimonial p {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial span {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .newsletter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(39, 35, 67, 0.95), rgba(63, 72, 168, 0.9));
+            color: #fff;
+            border-radius: 26px;
+            padding: 3rem;
+        }
+
+        .newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .newsletter p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .newsletter form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .newsletter input[type="email"] {
+            flex: 1 1 240px;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .newsletter button {
+            padding: 0.9rem 1.6rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--accent);
+            color: #111;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #11121a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2.4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .footer-column h4 {
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .topbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-copy p {
+                max-width: none;
+            }
+
+            .hero {
+                padding: 0 1.5rem 2.5rem;
+            }
+
+            main {
+                padding: 3rem 1.5rem;
+            }
+
+            .newsletter {
+                padding: 2.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="topbar">
+            <a href="#" class="logo">DesignSell Apparel</a>
+            <nav>
+                <a href="#koleksi">Koleksi</a>
+                <a href="#produk">Produk</a>
+                <a href="#testimoni">Testimoni</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+            <a href="#produk" class="nav-cta">Belanja Sekarang</a>
+        </div>
+        <div class="hero">
+            <div class="hero-copy">
+                <h1>Gaya Minimalis, Kualitas Premium.</h1>
+                <p>Temukan koleksi fashion terbaik untuk menunjang penampilanmu. Dibuat dengan material pilihan, cocok untuk segala kesempatan.</p>
+                <div class="hero-actions">
+                    <a href="#produk" class="btn-primary">Lihat Koleksi</a>
+                    <a href="#newsletter" class="btn-outline">Dapatkan Diskon 15%</a>
+                </div>
+            </div>
+            <div class="hero-banner">
+                <div class="tagline">Drop terbaru hadir dengan siluet modern dan warna netral yang mudah dipadukan.</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="features" id="koleksi">
+            <article class="feature-card">
+                <h3>Kurasi Eksklusif</h3>
+                <p>Koleksi terbatas dengan desain khas yang membuatmu tampil beda setiap saat.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Material Premium</h3>
+                <p>Kain breathable dan tahan lama, nyaman dipakai dari pagi hingga malam.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Gratis Pengiriman</h3>
+                <p>Pengiriman gratis seluruh Indonesia untuk pembelian di atas Rp500.000.</p>
+            </article>
+            <article class="feature-card">
+                <h3>Belanja Tanpa Risiko</h3>
+                <p>Garansi tukar ukuran 14 hari dan dukungan pelanggan responsif.</p>
+            </article>
+        </section>
+
+        <section id="produk">
+            <div class="section-heading">
+                <h2>Produk Terbaru</h2>
+                <span>Upgrade wardrobe kamu dengan pilihan favorit minggu ini.</span>
+            </div>
+            <div class="product-grid">
+                <article class="product-card product-1">
+                    <figure></figure>
+                    <div class="product-body">
+                        <span class="badge">Limited</span>
+                        <h3>Outer Linen Sienna</h3>
+                        <p>Jaket ringan bernuansa earth tone dengan lining breathable.</p>
+                        <div class="product-price">
+                            <span class="price-tag">Rp689.000</span>
+                            <a class="btn-outline" href="#">Tambah ke Tas</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card product-2">
+                    <figure></figure>
+                    <div class="product-body">
+                        <span class="badge">Bestseller</span>
+                        <h3>Set Katun Aster</h3>
+                        <p>Atasan dan celana relaxed fit dengan tekstur lembut.</p>
+                        <div class="product-price">
+                            <span class="price-tag">Rp749.000</span>
+                            <a class="btn-outline" href="#">Tambah ke Tas</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card product-3">
+                    <figure></figure>
+                    <div class="product-body">
+                        <span class="badge">New</span>
+                        <h3>Dress Midi Mistral</h3>
+                        <p>Silhouette flowy dengan detail pleats dan tali pinggang.</p>
+                        <div class="product-price">
+                            <span class="price-tag">Rp829.000</span>
+                            <a class="btn-outline" href="#">Tambah ke Tas</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card product-4">
+                    <figure></figure>
+                    <div class="product-body">
+                        <span class="badge">Restock</span>
+                        <h3>Overshirt Denim Slate</h3>
+                        <p>Layering klasik dengan wash biru abu dan kancing matte.</p>
+                        <div class="product-price">
+                            <span class="price-tag">Rp599.000</span>
+                            <a class="btn-outline" href="#">Tambah ke Tas</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Pilih Koleksi Favorit</h2>
+                <span>Mix & match untuk segala momen.</span>
+            </div>
+            <div class="collection-preview">
+                <article class="collection-card women">
+                    <div>
+                        <h3>Womenswear</h3>
+                        <span>Silhouette feminin dengan palet warna lembut.</span>
+                    </div>
+                </article>
+                <article class="collection-card men">
+                    <div>
+                        <h3>Menswear</h3>
+                        <span>Smart casual essentials dengan potongan modern.</span>
+                    </div>
+                </article>
+                <article class="collection-card kids">
+                    <div>
+                        <h3>Kidswear</h3>
+                        <span>Outfit nyaman untuk aktivitas sepanjang hari.</span>
+                    </div>
+                </article>
+                <article class="collection-card accesories">
+                    <div>
+                        <h3>Aksesori</h3>
+                        <span>Tas & footwear yang melengkapi tampilanmu.</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimoni">
+            <div class="section-heading">
+                <h2>Tanggapan Pelanggan</h2>
+                <span>Kisah nyata dari komunitas DesignSell.</span>
+            </div>
+            <div class="testimonial-grid">
+                <article class="testimonial">
+                    <p>“Detail jahitannya rapi banget, materialnya juga adem. Pasti balik belanja lagi!”</p>
+                    <span>— Dira, Jakarta</span>
+                </article>
+                <article class="testimonial">
+                    <p>“Pelayanan sangat cepat dan responsif. Ukuran bisa ditukar dengan mudah.”</p>
+                    <span>— Angga, Bandung</span>
+                </article>
+                <article class="testimonial">
+                    <p>“Koleksi minimalisnya cocok banget buat ke kantor maupun hangout.”</p>
+                    <span>— Sinta, Surabaya</span>
+                </article>
+            </div>
+        </section>
+
+        <section class="newsletter" id="newsletter">
+            <div>
+                <h3>Dapatkan Kejutan Spesial</h3>
+                <p>Berlangganan newsletter kami untuk update drop terbaru dan voucher eksklusif.</p>
+            </div>
+            <form>
+                <input type="email" placeholder="alamat email kamu" required>
+                <button type="submit">Langganan</button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="kontak">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>DesignSell Apparel</h4>
+                <p>Koleksi fashion kontemporer yang dibuat untuk gaya hidup urban modern.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Hubungi Kami</h4>
+                <ul>
+                    <li>Whatsapp: +62 812 3456 7890</li>
+                    <li>Email: support@designsell.id</li>
+                    <li>Instagram: @designsell.id</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Bantuan</h4>
+                <ul>
+                    <li>Panduan Ukuran</li>
+                    <li>Kebijakan Pengembalian</li>
+                    <li>Status Pesanan</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Kunjungi Showroom</h4>
+                <ul>
+                    <li>Jl. Dharmawangsa No. 18</li>
+                    <li>Jakarta Selatan</li>
+                    <li>Senin - Sabtu</li>
+                    <li>10.00 - 20.00 WIB</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 DesignSell Apparel. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
