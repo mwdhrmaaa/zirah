@@ -15,6 +15,43 @@
             --text: #2d2a44;
             --muted: #6c6a8a;
             --card-bg: #ffffff;
+            --card-border: rgba(15, 23, 42, 0.04);
+            --soft-layer: rgba(39, 35, 67, 0.03);
+            --badge-bg: rgba(39, 35, 67, 0.1);
+            --outline-border: rgba(255, 255, 255, 0.75);
+            --outline-hover-bg: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(15, 23, 42, 0.08);
+            --shadow-strong: rgba(15, 23, 42, 0.12);
+            --hero-overlay-1: rgba(39, 35, 67, 0.92);
+            --hero-overlay-2: rgba(29, 67, 102, 0.85);
+            --newsletter-overlay-1: rgba(39, 35, 67, 0.95);
+            --newsletter-overlay-2: rgba(63, 72, 168, 0.9);
+            --footer-bg: #11121a;
+            --footer-text: rgba(255, 255, 255, 0.7);
+            --footer-muted: rgba(255, 255, 255, 0.5);
+        }
+
+        body[data-theme="dark"] {
+            --bg-color: #0f111a;
+            --primary: #f5f5fb;
+            --accent: #ffd803;
+            --text: #e8e9ff;
+            --muted: #acafce;
+            --card-bg: #161a29;
+            --card-border: rgba(255, 255, 255, 0.04);
+            --soft-layer: rgba(255, 255, 255, 0.04);
+            --badge-bg: rgba(255, 255, 255, 0.08);
+            --outline-border: rgba(255, 255, 255, 0.35);
+            --outline-hover-bg: rgba(255, 255, 255, 0.12);
+            --shadow-color: rgba(6, 10, 26, 0.65);
+            --shadow-strong: rgba(8, 12, 34, 0.75);
+            --hero-overlay-1: rgba(12, 14, 24, 0.9);
+            --hero-overlay-2: rgba(25, 32, 68, 0.82);
+            --newsletter-overlay-1: rgba(24, 28, 50, 0.95);
+            --newsletter-overlay-2: rgba(52, 63, 121, 0.88);
+            --footer-bg: #07080f;
+            --footer-text: rgba(224, 228, 255, 0.8);
+            --footer-muted: rgba(224, 228, 255, 0.55);
         }
 
         * {
@@ -35,13 +72,17 @@
             color: inherit;
         }
 
+        body[data-theme="dark"] a {
+            color: inherit;
+        }
+
         img {
             max-width: 100%;
             display: block;
         }
 
         header {
-            background: linear-gradient(135deg, rgba(39, 35, 67, 0.92), rgba(29, 67, 102, 0.85)),
+            background: linear-gradient(135deg, var(--hero-overlay-1), var(--hero-overlay-2)),
                         url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1600&q=80") center/cover;
             color: #fff;
             padding-bottom: 4rem;
@@ -56,10 +97,81 @@
             padding: 1.5rem 2rem;
         }
 
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .logo {
             font-size: 1.4rem;
             font-weight: 600;
             letter-spacing: 0.08em;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .theme-toggle .theme-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        body[data-theme="dark"] .theme-toggle {
+            color: rgba(233, 235, 255, 0.9);
+        }
+
+        .toggle-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.25rem;
+            width: 60px;
+            height: 32px;
+            padding: 0 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 100%);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        body[data-theme="dark"] .toggle-btn {
+            border-color: rgba(103, 176, 255, 0.35);
+            background: linear-gradient(120deg, rgba(103, 176, 255, 0.45) 0%, rgba(49, 84, 157, 0.35) 100%);
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .toggle-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .toggle-btn .icon {
+            font-size: 1rem;
+            opacity: 0.45;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.35));
+        }
+
+        .toggle-btn[data-mode="light"] .icon.sun,
+        .toggle-btn[data-mode="dark"] .icon.moon {
+            opacity: 1;
+            transform: scale(1.12);
         }
 
         nav {
@@ -105,6 +217,10 @@
             max-width: 26rem;
         }
 
+        body[data-theme="dark"] .hero-copy p {
+            color: rgba(233, 235, 255, 0.74);
+        }
+
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
@@ -126,7 +242,7 @@
         }
 
         .btn-outline {
-            border: 1px solid rgba(255, 255, 255, 0.75);
+            border: 1px solid var(--outline-border);
             padding: 0.9rem 1.8rem;
             border-radius: 12px;
             color: #fff;
@@ -135,7 +251,15 @@
         }
 
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--outline-hover-bg);
+        }
+
+        body[data-theme="dark"] .btn-outline {
+            color: #f5f6ff;
+        }
+
+        body[data-theme="dark"] .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .hero-banner {
@@ -145,7 +269,7 @@
             min-height: 360px;
             background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid var(--outline-border);
             display: grid;
             place-items: center;
         }
@@ -203,7 +327,8 @@
             background: var(--card-bg);
             border-radius: 16px;
             padding: 1.8rem;
-            box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 14px 35px var(--shadow-color);
+            border: 1px solid var(--card-border);
         }
 
         .feature-card h3 {
@@ -227,13 +352,14 @@
             background: var(--card-bg);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 20px 40px var(--shadow-color);
+            border: 1px solid var(--card-border);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+            box-shadow: 0 24px 50px var(--shadow-strong);
         }
 
         .product-card figure {
@@ -294,7 +420,7 @@
         }
 
         .badge {
-            background: rgba(39, 35, 67, 0.1);
+            background: var(--badge-bg);
             color: var(--primary);
             padding: 0.25rem 0.7rem;
             border-radius: 999px;
@@ -360,7 +486,8 @@
             background: var(--card-bg);
             border-radius: 24px;
             padding: 2.6rem;
-            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.1);
+            box-shadow: 0 22px 45px var(--shadow-color);
+            border: 1px solid var(--card-border);
             margin-bottom: 4rem;
         }
 
@@ -371,7 +498,7 @@
         }
 
         .testimonial {
-            background: rgba(39, 35, 67, 0.03);
+            background: var(--soft-layer);
             border-radius: 18px;
             padding: 1.8rem;
         }
@@ -387,12 +514,16 @@
             color: var(--muted);
         }
 
+        body[data-theme="dark"] .testimonial span {
+            color: rgba(198, 202, 231, 0.85);
+        }
+
         .newsletter {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             align-items: center;
-            background: linear-gradient(135deg, rgba(39, 35, 67, 0.95), rgba(63, 72, 168, 0.9));
+            background: linear-gradient(135deg, var(--newsletter-overlay-1), var(--newsletter-overlay-2));
             color: #fff;
             border-radius: 26px;
             padding: 3rem;
@@ -422,6 +553,11 @@
             font-size: 0.95rem;
         }
 
+        body[data-theme="dark"] .newsletter input[type="email"] {
+            background: rgba(11, 14, 26, 0.72);
+            color: #f7f8ff;
+        }
+
         .newsletter button {
             padding: 0.9rem 1.6rem;
             border-radius: 12px;
@@ -438,8 +574,8 @@
         }
 
         footer {
-            background: #11121a;
-            color: rgba(255, 255, 255, 0.7);
+            background: var(--footer-bg);
+            color: var(--footer-text);
             padding: 2.4rem 2rem;
         }
 
@@ -467,7 +603,7 @@
             text-align: center;
             margin-top: 2rem;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--footer-muted);
         }
 
         @media (max-width: 600px) {
@@ -476,9 +612,19 @@
                 gap: 1rem;
             }
 
+            .topbar-right {
+                width: 100%;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            .theme-toggle {
+                order: 3;
             }
 
             .hero-copy p {
@@ -503,13 +649,22 @@
     <header>
         <div class="topbar">
             <a href="#" class="logo">DesignSell Apparel</a>
-            <nav>
-                <a href="#koleksi">Koleksi</a>
-                <a href="#produk">Produk</a>
-                <a href="#testimoni">Testimoni</a>
-                <a href="#kontak">Kontak</a>
-            </nav>
-            <a href="#produk" class="nav-cta">Belanja Sekarang</a>
+            <div class="topbar-right">
+                <nav>
+                    <a href="#koleksi">Koleksi</a>
+                    <a href="#produk">Produk</a>
+                    <a href="#testimoni">Testimoni</a>
+                    <a href="#kontak">Kontak</a>
+                </nav>
+                <div class="theme-toggle">
+                    <span class="theme-label">Tema</span>
+                    <button type="button" class="toggle-btn" aria-label="Ubah tema" aria-pressed="false" data-mode="light">
+                        <span class="icon sun" aria-hidden="true">☀️</span>
+                        <span class="icon moon" aria-hidden="true">🌙</span>
+                    </button>
+                </div>
+                <a href="#produk" class="nav-cta">Belanja Sekarang</a>
+            </div>
         </div>
         <div class="hero">
             <div class="hero-copy">
@@ -706,5 +861,38 @@
             © 2025 DesignSell Apparel. All rights reserved.
         </div>
     </footer>
+    <script>
+        (function () {
+            const body = document.body;
+            const toggleBtn = document.querySelector('.toggle-btn');
+            if (!toggleBtn) return;
+
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+            const storedTheme = localStorage.getItem('designsell-theme');
+
+            function applyTheme(theme) {
+                const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
+                body.setAttribute('data-theme', resolvedTheme);
+                document.documentElement.style.colorScheme = resolvedTheme;
+                toggleBtn.dataset.mode = resolvedTheme;
+                toggleBtn.setAttribute('aria-pressed', String(resolvedTheme === 'dark'));
+            }
+
+            const initialTheme = storedTheme || (prefersDark.matches ? 'dark' : 'light');
+            applyTheme(initialTheme);
+
+            toggleBtn.addEventListener('click', () => {
+                const nextTheme = toggleBtn.dataset.mode === 'dark' ? 'light' : 'dark';
+                applyTheme(nextTheme);
+                localStorage.setItem('designsell-theme', nextTheme);
+            });
+
+            prefersDark.addEventListener('change', (event) => {
+                if (!localStorage.getItem('designsell-theme')) {
+                    applyTheme(event.matches ? 'dark' : 'light');
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
