@@ -369,32 +369,15 @@
 
         .product-card figure {
             position: relative;
-            padding-top: 125%;
+            aspect-ratio: 4 / 5;
             overflow: hidden;
         }
 
-        .product-card figure::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .product-1 figure::before {
-            background-image: url("https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80");
-        }
-
-        .product-2 figure::before {
-            background-image: url("https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=800&q=80");
-        }
-
-        .product-3 figure::before {
-            background-image: url("https://images.unsplash.com/photo-1551232864-3f0890e580d7?auto=format&fit=crop&w=800&q=80");
-        }
-
-        .product-4 figure::before {
-            background-image: url("https://images.unsplash.com/photo-1517949908114-720226b864c1?auto=format&fit=crop&w=800&q=80");
+        .product-card figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .product-body {
@@ -713,7 +696,9 @@
             </div>
             <div class="product-grid">
                 <article class="product-card product-1">
-                    <figure></figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80" alt="Outer Linen Sienna" loading="lazy">
+                    </figure>
                     <div class="product-body">
                         <span class="badge">Limited</span>
                         <h3>Outer Linen Sienna</h3>
@@ -725,7 +710,9 @@
                     </div>
                 </article>
                 <article class="product-card product-2">
-                    <figure></figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=800&q=80" alt="Set Katun Aster" loading="lazy">
+                    </figure>
                     <div class="product-body">
                         <span class="badge">Bestseller</span>
                         <h3>Set Katun Aster</h3>
@@ -737,7 +724,9 @@
                     </div>
                 </article>
                 <article class="product-card product-3">
-                    <figure></figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d7?auto=format&fit=crop&w=800&q=80" alt="Dress Midi Mistral" loading="lazy">
+                    </figure>
                     <div class="product-body">
                         <span class="badge">New</span>
                         <h3>Dress Midi Mistral</h3>
@@ -749,7 +738,9 @@
                     </div>
                 </article>
                 <article class="product-card product-4">
-                    <figure></figure>
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1517949908114-720226b864c1?auto=format&fit=crop&w=800&q=80" alt="Overshirt Denim Slate" loading="lazy">
+                    </figure>
                     <div class="product-body">
                         <span class="badge">Restock</span>
                         <h3>Overshirt Denim Slate</h3>
