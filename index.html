@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignSell Apparel</title>
+    <title>HanaSell</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -794,7 +794,7 @@
         <section class="testimonials" id="testimoni">
             <div class="section-heading">
                 <h2>Tanggapan Pelanggan</h2>
-                <span>Kisah nyata dari komunitas DesignSell.</span>
+                <span>Kisah nyata dari komunitas HanaSell.</span>
             </div>
             <div class="testimonial-grid">
                 <article class="testimonial">
@@ -827,15 +827,15 @@
     <footer id="kontak">
         <div class="footer-content">
             <div class="footer-column">
-                <h4>DesignSell Apparel</h4>
+                <h4>HanaSell Apparel</h4>
                 <p>Koleksi fashion kontemporer yang dibuat untuk gaya hidup urban modern.</p>
             </div>
             <div class="footer-column">
                 <h4>Hubungi Kami</h4>
                 <ul>
                     <li>Whatsapp: +62 812 3456 7890</li>
-                    <li>Email: support@designsell.id</li>
-                    <li>Instagram: @designsell.id</li>
+                    <li>Email: support@hanasell.id</li>
+                    <li>Instagram: @hanasell.id</li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -858,7 +858,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2025 DesignSell Apparel. All rights reserved.
+            © 2025 HanaSell Apparel. All rights reserved.
         </div>
     </footer>
     <script>
@@ -868,7 +868,7 @@
             if (!toggleBtn) return;
 
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-            const storedTheme = localStorage.getItem('designsell-theme');
+            const storedTheme = localStorage.getItem('hanasell-theme');
 
             function applyTheme(theme) {
                 const resolvedTheme = theme === 'dark' ? 'dark' : 'light';
@@ -884,11 +884,11 @@
             toggleBtn.addEventListener('click', () => {
                 const nextTheme = toggleBtn.dataset.mode === 'dark' ? 'light' : 'dark';
                 applyTheme(nextTheme);
-                localStorage.setItem('designsell-theme', nextTheme);
+                localStorage.setItem('hanasell-theme', nextTheme);
             });
 
             prefersDark.addEventListener('change', (event) => {
-                if (!localStorage.getItem('designsell-theme')) {
+                if (!localStorage.getItem('hanasell-theme')) {
                     applyTheme(event.matches ? 'dark' : 'light');
                 }
             });
